@@ -1,0 +1,42 @@
+package android.rezndm.test_lightit.model
+
+import retrofit2.Call
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.*
+
+interface ApiService {
+
+    // register user
+    @POST("api/register/")
+    @FormUrlEncoded
+    fun registerRequest(@Field("username") username: String,
+                        @Field("password") password: String): Call<LoginDataAnswer>
+
+    // loginRequest
+    @POST("api/login/")
+    @FormUrlEncoded
+    fun loginRequest(@Field("username") username: String,
+                     @Field("password") password: String): Call<LoginDataAnswer>
+
+    @GET("api/products/")
+    fun getAllProducts(): Call<List<Product>>
+
+    @GET("api/reviews/1")
+    fun getReviews(): Call<List<Review>>
+
+    companion object RetrofitInstance {
+        private const val BASE_URL = "http://smktesting.herokuapp.com/"
+
+        fun initialize(): ApiService {
+            val retrofit = Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .baseUrl(BASE_URL)
+                .build()
+
+            return retrofit.create(ApiService::class.java)
+        }
+    }
+}
