@@ -3,19 +3,13 @@ package android.rezndm.test_lightit.auth.login
 import android.os.Bundle
 import android.rezndm.test_lightit.R
 import android.rezndm.test_lightit.auth.register.RegisterFragment
-import android.rezndm.test_lightit.model.ApiService
-import android.rezndm.test_lightit.model.Product
-import android.rezndm.test_lightit.model.Review
-import android.util.Log
+import android.rezndm.test_lightit.products.ProductsFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class LoginFragment: Fragment(), LoginView {
 
@@ -29,6 +23,12 @@ class LoginFragment: Fragment(), LoginView {
         super.onViewCreated(view, savedInstanceState)
         setupLoginButton()
         setupSignUpButton()
+        setupContinueWithoutRegBtn()
+
+        val username = arguments?.getString(RegisterFragment.BUNDLE_USERNAME, "")
+        val password = arguments?.getString(RegisterFragment.BUNDLE_PASSWORD, "")
+        username_edt.setText(username)
+        password_edt.setText(password)
     }
 
     private fun setupLoginButton(){
@@ -58,39 +58,16 @@ class LoginFragment: Fragment(), LoginView {
         }
     }
 
+    private fun setupContinueWithoutRegBtn(){
+        btn_continue_wo_reg.setOnClickListener {
+            val tx = activity?.supportFragmentManager?.beginTransaction()
+            tx?.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.enter, R.anim.exit)
+            tx?.replace(R.id.container, ProductsFragment())?.addToBackStack(null)?.commit()
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val layout = inflater.inflate(R.layout.fragment_login, container, false)
-
-
-        val apiService = ApiService.initialize()
-
-        val qwe = apiService.getAllProducts()
-
-        qwe.enqueue(object: Callback<List<Product>> {
-            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
-
-            }
-
-            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
-                Log.d(LOG_TAG, response.body().toString())
-            }
-
-        })
-
-        val ewq = apiService.getReviews()
-
-        ewq.enqueue(object: Callback<List<Review>>{
-            override fun onFailure(call: Call<List<Review>>, t: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onResponse(call: Call<List<Review>>, response: Response<List<Review>>) {
-                Log.d(LOG_TAG, response.body().toString())
-            }
-
-        })
-
-        return layout
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun logIn(success: Boolean) {
@@ -101,7 +78,7 @@ class LoginFragment: Fragment(), LoginView {
         }
     }
 
-    fun makeToast(text: String){
+    private fun makeToast(text: String){
         Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
     }
 

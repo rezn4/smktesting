@@ -22,8 +22,7 @@ class RegisterPresenterImpl(private val registerView: RegisterView):RegisterPres
                 val success = loginDataAnswer?.success
 
                 if (success != null) {
-                    registerView.handleRegistrationResult(success)
-                    Log.d("QWEQWE", loginDataAnswer.token)
+                    registerView.handleRegistrationResult(success, username, password)
                 }
             }
 

@@ -15,13 +15,24 @@ import kotlinx.android.synthetic.main.fragment_signup.*
 
 class RegisterFragment: Fragment(), RegisterView {
 
+    companion object {
+        const val BUNDLE_USERNAME = "BUNDLE_USERNAME"
+        const val BUNDLE_PASSWORD = "BUNDLE_PASSWORD"
+    }
+
     private val registerPresenter = RegisterPresenterImpl(this)
 
-    override fun handleRegistrationResult(success: Boolean) {
+    override fun handleRegistrationResult(success: Boolean, username: String, password: String) {
         if (success){
             clearFragmentsBackstack()
             val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.container, LoginFragment())?.addToBackStack(null)?.commit()
+            val loginFragment = LoginFragment()
+            val args = Bundle()
+            args.putString(BUNDLE_USERNAME, username)
+            args.putString(BUNDLE_PASSWORD, password)
+            loginFragment.arguments = args
+
+            fragmentTransaction?.replace(R.id.container, loginFragment)?.commit()
         } else {
             makeToast(getString(R.string.warning_reg_error))
         }

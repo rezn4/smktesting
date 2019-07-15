@@ -19,10 +19,8 @@ class LoginPresenterImpl(private val loginView: LoginView): LoginPresenter {
 
             override fun onResponse(call: Call<LoginDataAnswer>, response: Response<LoginDataAnswer>) {
                 val loginAnswer = response.body()
-                // TODO !!!
                 val response: Boolean = loginAnswer!!.success
                 loginView.logIn(response)
-                Log.d("QWEQWE", loginAnswer.token)
             }
         })
     }

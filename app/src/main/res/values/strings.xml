@@ -24,6 +24,6 @@
     <string name="warning_username_empty">Username is empty</string>
     <string name="warning_data_empty">Data fields is empty</string>
     <string name="result_success_login">Successful login</string>
-    <string name="result_not_success_login">Invalid data</string>
+    <string name="result_not_success_login">Invalid data, please try again</string>
     <string name="warning_reg_error">Something went wrong, please try again</string>
 </resources>

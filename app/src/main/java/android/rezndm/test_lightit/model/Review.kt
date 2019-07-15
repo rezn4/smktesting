@@ -2,15 +2,21 @@ package android.rezndm.test_lightit.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Review(
-    @SerializedName("id")
+class Review(
     var id: Int,
-    @SerializedName("rate")
+    @SerializedName("product")
+    var productId: Int,
     var rate: Int,
-    @SerializedName("text")
-    var comment: String,
-    @SerializedName("Id_user")
-    var userId: Int,
-    @SerializedName("Id_entry")
-    var productId: Int
-)
+    var text: String,
+    @SerializedName("created_by")
+    var user: User,
+    @SerializedName("created_at")
+    var createDate: String
+
+){
+    class User(
+        var id: Int,
+        var username: String,
+        var email: String
+    )
+}

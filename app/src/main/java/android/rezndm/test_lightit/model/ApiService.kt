@@ -23,11 +23,12 @@ interface ApiService {
     @GET("api/products/")
     fun getAllProducts(): Call<List<Product>>
 
-    @GET("api/reviews/1")
-    fun getReviews(): Call<List<Review>>
+    @GET("api/reviews/{product_id}")
+    fun getReviewsByProductId(@Path("product_id") productId: Int): Call<List<Review>>
 
     companion object RetrofitInstance {
-        private const val BASE_URL = "http://smktesting.herokuapp.com/"
+        const val BASE_URL = "http://smktesting.herokuapp.com/"
+        const val IMAGE_STORAGE_PATH = "static/"
 
         fun initialize(): ApiService {
             val retrofit = Retrofit.Builder()
