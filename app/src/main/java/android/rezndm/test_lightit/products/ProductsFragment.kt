@@ -22,7 +22,7 @@ class ProductsFragment : Fragment(), ProductsView {
     private lateinit var productsPresenter: ProductsPresenter
     private lateinit var dialog: AlertDialog
 
-    override fun showProducts(products: List<Product>){
+    override fun showProducts(products: List<Product>) {
         productsAdapter.products.addAll(products)
         productsAdapter.notifyDataSetChanged()
         dialog.dismiss()
@@ -38,17 +38,15 @@ class ProductsFragment : Fragment(), ProductsView {
         return inflater.inflate(R.layout.fragment_products_list, container, false)
     }
 
-    private fun blockUi(){
-        if (productsAdapter.products.isEmpty()){
-            dialog = SpotsDialog.Builder()
-                .setContext(activity)
-                .setMessage(getString(R.string.progress_bar_loading))
-                .setCancelable(false)
-                .build()
-                .apply {
-                    show()
-                }
-        }
+    private fun blockUi() {
+        dialog = SpotsDialog.Builder()
+            .setContext(activity)
+            .setMessage(getString(R.string.progress_bar_loading))
+            .setCancelable(false)
+            .build()
+            .apply {
+                show()
+            }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,10 +55,12 @@ class ProductsFragment : Fragment(), ProductsView {
         products_recycler_view.layoutManager = layoutManager
         products_recycler_view.adapter = productsAdapter
 
-        productsPresenter.loadProducts()
-        blockUi()
+        if (productsAdapter.products.isEmpty()) {
+            productsPresenter.loadProducts()
+            blockUi()
+        }
 
-        productsAdapter.setOnClickListener(object: ProductsAdapter.ClickListener {
+        productsAdapter.setOnClickListener(object : ProductsAdapter.ClickListener {
             override fun onItemClick(id: Int) {
                 val tx = activity?.supportFragmentManager?.beginTransaction()
                 val reviewFragment = ReviewFragment()
