@@ -2,17 +2,17 @@ package android.rezndm.test_lightit.auth.login
 
 import android.rezndm.test_lightit.model.ApiService
 import android.rezndm.test_lightit.model.LoginDataAnswer
-import android.rezndm.test_lightit.model.Repository
+import android.rezndm.test_lightit.model.TokenRepositorySharedPrefs
 import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class LoginPresenterImpl(private val loginView: LoginView,
-                         private val repository: Repository): LoginPresenter {
+                         private val tokenRepositorySharedPrefs: TokenRepositorySharedPrefs): LoginPresenter {
 
     override fun onTokenReceived(token: String?) {
-        repository.saveToken(token)
+        tokenRepositorySharedPrefs.saveToken(token)
     }
 
     override fun requestLogin(username: String, password: String) {

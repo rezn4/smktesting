@@ -21,10 +21,12 @@ class ReviewPresenterImpl(private val reviewView: ReviewView): ReviewPresenter {
 
             override fun onResponse(call: Call<ReviewAnswer>, response: Response<ReviewAnswer>) {
                 val reviewAnswer = response.body()
-                val success: Boolean? = reviewAnswer?.success
+                val success = reviewAnswer?.success
 
-                if (success!!){
-                    reviewView.updateReviews()
+                if (success != null){
+                    reviewView.updateReviews(success)
+                } else {
+                    reviewView.updateReviews(false)
                 }
             }
         })

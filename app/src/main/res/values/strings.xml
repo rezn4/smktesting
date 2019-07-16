@@ -7,12 +7,6 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
     <string name="login_btn">Login</string>
     <string name="register_textview">Dont have an account? Sign Up</string>
     <string name="continue_wo_register_tv">Continue without registration</string>
@@ -27,8 +21,13 @@
     <string name="result_not_success_login">Invalid data, please try again</string>
     <string name="warning_reg_error">Something went wrong, please try again</string>
     <string name="post_comment_btn">Post</string>
-    <string name="comment_text_hint">Leave a comment...</string>
+    <string name="comment_text_hint">Leave a comment…</string>
     <string name="review_empty_warning">Please, enter a comment text</string>
     <string name="comment_added">Comment added</string>
     <string name="review_rating_warning">You should set a rating</string>
+    <string name="menu_logout">Logout</string>
+    <string name="empty_string"> </string>
+    <string name="logout_warning">You can\'t logout when you\'re not logged in</string>
+    <string name="review_token_expired">Looks like your token has expired, logout and sign up again</string>
+    <string name="progress_bar_loading">Loading…</string>
 </resources>

@@ -51,9 +51,9 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>(
     }
 
 
-    class ProductViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        val layout: ConstraintLayout = v.product_layout
-        val image: ImageView = v.product_image
-        val description: TextView = v.product_description
+    class ProductViewHolder(item: View) : RecyclerView.ViewHolder(item) {
+        val layout: ConstraintLayout = item.product_layout
+        val image: ImageView = item.product_image
+        val description: TextView = item.product_description
     }
 }

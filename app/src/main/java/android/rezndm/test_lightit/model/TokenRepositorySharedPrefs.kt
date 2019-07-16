@@ -7,7 +7,7 @@ interface TokenRepository {
     fun saveToken(token: String?)
 }
 
-class Repository (private val preferences: SharedPreferences): TokenRepository {
+class TokenRepositorySharedPrefs (private val preferences: SharedPreferences): TokenRepository {
 
     companion object {
         const val PREFS_TOKEN_KEY = "PREFS_TOKEN_KEY"

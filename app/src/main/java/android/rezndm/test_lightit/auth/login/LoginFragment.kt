@@ -6,9 +6,8 @@ import android.rezndm.test_lightit.R
 import android.rezndm.test_lightit.auth.register.RegisterFragment
 import android.rezndm.test_lightit.model.Const
 import android.rezndm.test_lightit.model.LoginDataAnswer
-import android.rezndm.test_lightit.model.Repository
+import android.rezndm.test_lightit.model.TokenRepositorySharedPrefs
 import android.rezndm.test_lightit.products.ProductsFragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +27,7 @@ class LoginFragment: Fragment(), LoginView {
         super.onViewCreated(view, savedInstanceState)
 
         loginPresenter = LoginPresenterImpl(this,
-            Repository(PreferenceManager.getDefaultSharedPreferences(activity))
+            TokenRepositorySharedPrefs(PreferenceManager.getDefaultSharedPreferences(activity))
         )
 
         setupLoginButton()

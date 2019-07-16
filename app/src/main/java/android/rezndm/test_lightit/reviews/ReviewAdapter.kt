@@ -2,7 +2,6 @@ package android.rezndm.test_lightit.reviews
 
 import android.rezndm.test_lightit.R
 import android.rezndm.test_lightit.model.Review
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,10 +34,10 @@ class ReviewAdapter: RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
     }
 
 
-    class ReviewViewHolder(layout: View) : RecyclerView.ViewHolder(layout){
-        val username: TextView = layout.review_username
-        val comment: TextView = layout.review_comment
-        val date: TextView = layout.review_date
-        val ratingBar: RatingBar = layout.review_rating
+    class ReviewViewHolder(item: View) : RecyclerView.ViewHolder(item){
+        val username: TextView = item.review_username
+        val comment: TextView = item.review_comment
+        val date: TextView = item.review_date
+        val ratingBar: RatingBar = item.review_rating
     }
 }
