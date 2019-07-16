@@ -57,7 +57,11 @@ class ReviewFragment: Fragment(), ReviewView, RatingBar.OnRatingBarChangeListene
                 val rate = review_rating.rating.toInt()
 
                 if (text.isNotEmpty()){
-                    reviewPresenter.postReview(text, rate, "Token $token", productId)
+                    if (rate > 0){
+                        reviewPresenter.postReview(text, rate, "Token $token", productId)
+                    } else {
+                        Toast.makeText(activity, getString(R.string.review_rating_warning), Toast.LENGTH_SHORT).show()
+                    }
                 } else {
                     Toast.makeText(activity, getString(R.string.review_empty_warning), Toast.LENGTH_SHORT).show()
                 }
