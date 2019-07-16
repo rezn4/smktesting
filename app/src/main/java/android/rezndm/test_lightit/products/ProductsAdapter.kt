@@ -3,7 +3,6 @@ package android.rezndm.test_lightit.products
 import android.rezndm.test_lightit.R
 import android.rezndm.test_lightit.model.ApiService
 import android.rezndm.test_lightit.model.Product
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,8 +52,8 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>(
 
 
     class ProductViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        val layout: ConstraintLayout = v.findViewById(R.id.product_layout)
-        val image: ImageView = v.findViewById(R.id.product_image)
-        val description: TextView = v.findViewById(R.id.product_description)
+        val layout: ConstraintLayout = v.product_layout
+        val image: ImageView = v.product_image
+        val description: TextView = v.product_description
     }
 }

@@ -2,7 +2,7 @@ package android.rezndm.test_lightit.products
 
 import android.os.Bundle
 import android.rezndm.test_lightit.R
-import android.rezndm.test_lightit.auth.register.RegisterFragment
+import android.rezndm.test_lightit.model.Const
 import android.rezndm.test_lightit.model.Product
 import android.rezndm.test_lightit.reviews.ReviewFragment
 import android.util.Log
@@ -14,10 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_products_list.*
 
 class ProductsFragment : Fragment(), ProductsView {
-
-    companion object {
-        const val BUNDLE_PRODUCT_ID = "BUNDLE_PRODUCT_ID"
-    }
 
     private val productsAdapter = ProductsAdapter()
 
@@ -49,7 +45,7 @@ class ProductsFragment : Fragment(), ProductsView {
                 val tx = activity?.supportFragmentManager?.beginTransaction()
                 val reviewFragment = ReviewFragment()
                 val args = Bundle()
-                args.putInt(BUNDLE_PRODUCT_ID, id)
+                args.putInt(Const.BUNDLE_PRODUCT_ID_KEY, id)
                 reviewFragment.arguments = args
                 tx?.replace(R.id.container, reviewFragment)?.addToBackStack(null)?.commit()
             }

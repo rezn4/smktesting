@@ -40,6 +40,7 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:numStars="5"
+            android:theme="@style/RatingBar"
             android:layout_height="wrap_content"
             android:id="@+id/review_rating"
             android:layout_marginTop="8dp"

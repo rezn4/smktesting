@@ -2,12 +2,19 @@ package android.rezndm.test_lightit.auth.login
 
 import android.rezndm.test_lightit.model.ApiService
 import android.rezndm.test_lightit.model.LoginDataAnswer
+import android.rezndm.test_lightit.model.Repository
 import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginPresenterImpl(private val loginView: LoginView): LoginPresenter {
+class LoginPresenterImpl(private val loginView: LoginView,
+                         private val repository: Repository): LoginPresenter {
+
+    override fun onTokenReceived(token: String?) {
+        repository.saveToken(token)
+    }
+
     override fun requestLogin(username: String, password: String) {
         val apiService: ApiService = ApiService.initialize()
         val loginAnswer = apiService.loginRequest(username, password)
@@ -19,8 +26,10 @@ class LoginPresenterImpl(private val loginView: LoginView): LoginPresenter {
 
             override fun onResponse(call: Call<LoginDataAnswer>, response: Response<LoginDataAnswer>) {
                 val loginAnswer = response.body()
-                val response: Boolean = loginAnswer!!.success
-                loginView.logIn(response)
+
+                if (loginAnswer != null){
+                    loginView.logIn(loginAnswer)
+                }
             }
         })
     }

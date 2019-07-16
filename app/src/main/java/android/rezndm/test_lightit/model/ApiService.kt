@@ -8,13 +8,11 @@ import retrofit2.http.*
 
 interface ApiService {
 
-    // register user
     @POST("api/register/")
     @FormUrlEncoded
     fun registerRequest(@Field("username") username: String,
                         @Field("password") password: String): Call<LoginDataAnswer>
 
-    // loginRequest
     @POST("api/login/")
     @FormUrlEncoded
     fun loginRequest(@Field("username") username: String,
@@ -25,6 +23,13 @@ interface ApiService {
 
     @GET("api/reviews/{product_id}")
     fun getReviewsByProductId(@Path("product_id") productId: Int): Call<List<Review>>
+
+    @POST("api/reviews/{product_id}")
+    @FormUrlEncoded
+    fun postReview(@Header("Authorization") token: String,
+                   @Path("product_id") productId: Int,
+                   @Field("text") text: String,
+                   @Field("rate") rate: Int): Call<ReviewAnswer>
 
     companion object RetrofitInstance {
         const val BASE_URL = "http://smktesting.herokuapp.com/"

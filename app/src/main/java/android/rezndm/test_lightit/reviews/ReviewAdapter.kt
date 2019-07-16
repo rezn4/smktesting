@@ -32,7 +32,6 @@ class ReviewAdapter: RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
         holder.comment.text = review.text
         holder.date.text = review.createDate
         holder.ratingBar.rating = review.rate.toFloat()
-
     }
 
 

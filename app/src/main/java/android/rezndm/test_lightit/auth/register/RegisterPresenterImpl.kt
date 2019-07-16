@@ -2,7 +2,6 @@ package android.rezndm.test_lightit.auth.register
 
 import android.rezndm.test_lightit.model.ApiService
 import android.rezndm.test_lightit.model.LoginDataAnswer
-import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

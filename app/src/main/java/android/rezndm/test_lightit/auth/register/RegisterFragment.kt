@@ -3,6 +3,7 @@ package android.rezndm.test_lightit.auth.register
 import android.os.Bundle
 import android.rezndm.test_lightit.R
 import android.rezndm.test_lightit.auth.login.LoginFragment
+import android.rezndm.test_lightit.model.Const
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,11 +16,6 @@ import kotlinx.android.synthetic.main.fragment_signup.*
 
 class RegisterFragment: Fragment(), RegisterView {
 
-    companion object {
-        const val BUNDLE_USERNAME = "BUNDLE_USERNAME"
-        const val BUNDLE_PASSWORD = "BUNDLE_PASSWORD"
-    }
-
     private val registerPresenter = RegisterPresenterImpl(this)
 
     override fun handleRegistrationResult(success: Boolean, username: String, password: String) {
@@ -28,10 +24,9 @@ class RegisterFragment: Fragment(), RegisterView {
             val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction()
             val loginFragment = LoginFragment()
             val args = Bundle()
-            args.putString(BUNDLE_USERNAME, username)
-            args.putString(BUNDLE_PASSWORD, password)
+            args.putString(Const.BUNDLE_USERNAME_KEY, username)
+            args.putString(Const.BUNDLE_PASSWORD_KEY, password)
             loginFragment.arguments = args
-
             fragmentTransaction?.replace(R.id.container, loginFragment)?.commit()
         } else {
             makeToast(getString(R.string.warning_reg_error))
@@ -42,6 +37,7 @@ class RegisterFragment: Fragment(), RegisterView {
         val fm = activity?.supportFragmentManager
 
         val entry = fm?.getBackStackEntryAt(0)
+
         if (entry != null) {
             fm.popBackStack(
                 entry.id,
@@ -49,7 +45,6 @@ class RegisterFragment: Fragment(), RegisterView {
             )
         }
         fm?.executePendingTransactions()
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

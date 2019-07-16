@@ -1,5 +1,7 @@
 package android.rezndm.test_lightit.auth.login
 
+import android.rezndm.test_lightit.model.LoginDataAnswer
+
 interface LoginView {
-    fun logIn(success: Boolean)
+    fun logIn(loginDataAnswer: LoginDataAnswer)
 }
