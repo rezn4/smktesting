@@ -29,4 +29,5 @@
     <string name="post_comment_btn">Post</string>
     <string name="comment_text_hint">Leave a comment...</string>
     <string name="review_empty_warning">Please, enter a comment text</string>
+    <string name="comment_added">Comment added</string>
 </resources>

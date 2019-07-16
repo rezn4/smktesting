@@ -23,6 +23,7 @@ class ReviewFragment: Fragment(), ReviewView, RatingBar.OnRatingBarChangeListene
     override fun updateReviews() {
         reviewAdapter.reviews.clear()
         reviewPresenter.loadReviews(productId)
+        Toast.makeText(activity, getString(R.string.comment_added), Toast.LENGTH_SHORT).show()
     }
 
     private val reviewAdapter = ReviewAdapter()
