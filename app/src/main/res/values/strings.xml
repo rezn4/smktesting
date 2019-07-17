@@ -30,4 +30,5 @@
     <string name="logout_warning">You can\'t logout when you\'re not logged in</string>
     <string name="review_token_expired">Looks like your token has expired, logout and sign up again</string>
     <string name="progress_bar_loading">Loading…</string>
+    <string name="register_success">Account created</string>
 </resources>

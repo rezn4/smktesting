@@ -105,7 +105,7 @@ class ReviewFragment: Fragment(), ReviewView, RatingBar.OnRatingBarChangeListene
                 }
             }
         } else {
-            review_post_a_comment.visibility = View.GONE
+            review_comment_layout.visibility = View.GONE
         }
     }
 

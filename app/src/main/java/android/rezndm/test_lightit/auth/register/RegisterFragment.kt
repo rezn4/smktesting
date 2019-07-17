@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_signup.*
 
 class RegisterFragment: Fragment(), RegisterView {
 
-    private val registerPresenter = RegisterPresenterImpl(this)
+    private val registerPresenter: RegisterPresenter = RegisterPresenterImpl(this)
 
     override fun handleRegistrationResult(success: Boolean, username: String, password: String) {
         if (success){
@@ -28,6 +28,7 @@ class RegisterFragment: Fragment(), RegisterView {
             args.putString(Const.BUNDLE_PASSWORD_KEY, password)
             loginFragment.arguments = args
             fragmentTransaction?.replace(R.id.container, loginFragment)?.commit()
+            makeToast(getString(R.string.register_success))
         } else {
             makeToast(getString(R.string.warning_reg_error))
         }
