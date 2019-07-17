@@ -1,5 +1,6 @@
 package android.rezndm.test_lightit.auth.login
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.rezndm.test_lightit.R
@@ -70,6 +71,8 @@ class LoginFragment: Fragment(), LoginView {
     }
 
     private fun setupSignUpButton(){
+        btn_signup.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+
         btn_signup.setOnClickListener {
             launchFragment(RegisterFragment())
         }

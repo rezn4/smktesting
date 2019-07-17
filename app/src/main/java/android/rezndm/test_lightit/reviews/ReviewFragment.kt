@@ -18,7 +18,6 @@ import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.fragment_reviews.*
 
 class ReviewFragment: Fragment(), ReviewView, RatingBar.OnRatingBarChangeListener {
-
     private var productId: Int = 0
     private lateinit var reviewPresenter: ReviewPresenter
     private lateinit var dialog: AlertDialog
@@ -75,7 +74,6 @@ class ReviewFragment: Fragment(), ReviewView, RatingBar.OnRatingBarChangeListene
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
-
         blockUi()
         reviewPresenter.loadReviews(productId)
 

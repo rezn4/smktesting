@@ -11,26 +11,4 @@
             android:layout_height="wrap_content"
             android:id="@+id/products_recycler_view">
     </androidx.recyclerview.widget.RecyclerView>
-
-    <!--<com.budiyev.android.circularprogressbar.CircularProgressBar-->
-            <!--android:id="@+id/progress_bar"-->
-            <!--android:layout_width="96dp"-->
-            <!--android:layout_height="96dp"-->
-            <!--android:layout_gravity="center"-->
-            <!--app:animateProgress="true"-->
-            <!--app:backgroundStrokeColor="#ff3f51b5"-->
-            <!--app:backgroundStrokeWidth="2dp"-->
-            <!--app:drawBackgroundStroke="false"-->
-            <!--app:foregroundStrokeCap="butt"-->
-            <!--app:foregroundStrokeColor="#ffff4081"-->
-            <!--app:foregroundStrokeWidth="3dp"-->
-            <!--app:indeterminate="false"-->
-            <!--app:indeterminateRotationAnimationDuration="1200"-->
-            <!--app:indeterminateSweepAnimationDuration="600"-->
-            <!--app:indeterminateMinimumAngle="45"-->
-            <!--app:maximum="100"-->
-            <!--app:progress="50"-->
-            <!--app:progressAnimationDuration="100"-->
-            <!--app:startAngle="270"/>-->
-
 </LinearLayout>
